@@ -25,8 +25,7 @@ There are several options to alleviate this problem:
         + Shared database can get locked by any of the users.
         + Security risk: confidential information under the GDPR such as
           patient IDs can end up in the database, where everyone can read it.
-2. Use Cromwell's in-memory database with a persistence file. Documented `here
-   <https://cromwell.readthedocs.io/en/stable/Configuring/#database>`_:
+2. Use Cromwell's in-memory database with a persistence file. Documented `here <https://cromwell.readthedocs.io/en/stable/Configuring/#database>`_:
     pros:
         + Allows per-project databases to be set up easily.
         + Everyone can share the same configuration as the database can be
