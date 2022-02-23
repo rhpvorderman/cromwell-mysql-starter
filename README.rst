@@ -48,4 +48,29 @@ There are several options to alleviate this problem:
 Currently we use option number 2 on our cluster. Unfortunately it does not
 scale towards thousands of jobs.
 
+Option 4: Allow creation of a per user MySQL database using command line scripts
+--------------------------------------------------------------------------------
 
+MySQL has a server-based architecture. Setting up a server is usuallly not
+possible without root permissions, however there are some features that enable
+setting up MySQL for non-root users.
+
++ Mysql is available trough the conda-forge channel and can be installed with
+  miniconda.
++ Disabling of networking altogether
++ Communicating via file socket
+
+This way a per user database can be set up by the users themselves without
+intervention.
+
+step 1: Installing mysql
+++++++++++++++++++++++++++++++++++++++++++++++++++++
+Set up miniconda with the conda-forge channel. Then:
+
+    conda create -y -n mysql mysql
+    conda activate mysql
+
+step 2: Setting up a default configuration
+++++++++++++++++++++++++++++++++++++++++++++++++++++
+`mysqld` config values can be overwritten on the command line or can be set
+in a personal config file: `~/.my.cnf`.
