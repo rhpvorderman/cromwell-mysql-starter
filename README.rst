@@ -74,3 +74,32 @@ step 2: Setting up a default configuration
 ++++++++++++++++++++++++++++++++++++++++++++++++++++
 `mysqld` config values can be overwritten on the command line or can be set
 in a personal config file: `~/.my.cnf`.
+
+Set the following values::
+
+    [mysqld]
+    datadir=/path/to/mysqldb
+    skip-networking=TRUE
+    socket=/path/to/socket
+
+step 3: Set up the cromwell configuration
+++++++++++++++++++++++++++++++++++++++++++
+
+.. code-block::
+
+    database {
+      profile = "slick.jdbc.MySQLProfile$"
+      db {
+        driver = "com.mysql.cj.jdbc.Driver"
+        url = "jdbc:mysql:file:///path/to/socket/cromwell?rewriteBatchedStatements=true"
+        user = "user"
+        password = "pass"
+        connectionTimeout = 5000
+      }
+    }
+
+
+step 4: Start
++++++++++++++++++++++++++++++++++++++
++ On first start: ``mysqld --initialize``
++ Start the database ``mysqld -D``
